@@ -15,11 +15,11 @@ from linebot.models import (
 
 app = Flask(__name__)
 
-# line api
+# line
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ['YOUR_CHANNEL_ACCESS_TOKEN']
 YOUR_CHANNEL_SECRET = os.environ['YOUR_CHANNEL_SECRET']
 
-# beebotte
+#beebotte
 YOUR_BEEBOTTE_TOKEN = os.environ['YOUR_BEEBOTTE_TOKEN']
 
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
