@@ -5,6 +5,6 @@ expect -c "
 spawn git push
 expect \"Username\"
 send \"kanon07\n\"
-expect \"password\"
+expect \"Password\"
 send \"wakamekanonn13\n\"
 "
