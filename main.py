@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Flask, request, abort
 import paho.mqtt.publish as publish
 import os
