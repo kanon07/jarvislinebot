@@ -40,10 +40,10 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
 		}
 	}));
 
-//全イベント終了時したらイベントを個数を出力
-Promise.all(events_processed).then(
-	(response) => {
-		console.log(`$(response.length} event(s) processed.`);
-}
-);
+	//全イベント終了時したらイベントを個数を出力
+	Promise.all(events_processed).then(
+		(response) => {
+			console.log(`${response.length} event(s) processed.`);
+		}
+	);
 });
