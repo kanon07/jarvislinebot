@@ -70,10 +70,10 @@ def handle_message(event):
         publish_aircon_control_msg('off')
     else:
         broadcast_line_msg('\n'.join(['エアコンをつけたい時：', \
-                                     *['['+s.decode('utf-8')+']' for s in on_msg], \
-                                     '\nエアコンを消したい時：', \
-                                     *['['+s.decode('utf-8')+']' for s in off_msg] , \
-                                     '\nって話しかけてね！']))
+                                    *['['+s.decode('utf-8')+']' for s in on_msg], \
+                                    '\nエアコンを消したい時：', \
+                                    *['['+s.decode('utf-8')+']' for s in off_msg] , \
+                                    '\nって話しかけてね！']))
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT'))
