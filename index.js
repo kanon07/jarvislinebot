@@ -35,7 +35,7 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
 				//replymessageで返信し、プロミスをprocessedに格納
 				events_processed.push(bot.replyMessage(event.replyToken, {
 					type: "text",
-					text: "これはこれは"
+					text: "これはこれ～～～～"
 				}));
 			}
 		}

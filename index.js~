@@ -25,12 +25,13 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
 
 	//イベント処理のプロミスを格納
 	let events_processed = [];
+
 	//オブジェクトを順次処理
 	req.body.events.forEach((event) => {
 		//イベントタイプがメッセージかつテキストだった場合
 		if (event.type == "message" && event.message.type == "text"){
 			//メッセージがこんにちはだったら
-			if(event.message.text == "こんにちは"){
+			if (event.message.text == "こんにちは"){
 				//replymessageで返信し、プロミスをprocessedに格納
 				events_processed.push(bot.replyMessage(event.replyToken, {
 					type: "text",
@@ -38,7 +39,7 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
 				}));
 			}
 		}
-	}));
+	});
 
 	//全イベント終了時したらイベントを個数を出力
 	Promise.all(events_processed).then(
