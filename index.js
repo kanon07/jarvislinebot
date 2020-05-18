@@ -1,24 +1,23 @@
-//-----------------------------------------------------------------------------
-// ƒ‚ƒWƒ…[ƒ‹‚ÌƒCƒ“ƒ|[ƒg
+// -----------------------------------------------------------------------------
+// ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 const server = require("express")();
-const line = require("@line/bot-sdk"); // Messaging API‚ÌSDK‚ðƒCƒ“ƒ|[ƒg
+const line = require("@line/bot-sdk"); // Messaging APIã®SDKã‚’ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 
 // -----------------------------------------------------------------------------
-// ƒpƒ‰ƒ[ƒ^Ý’è
+// ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿è¨­å®š
 const line_config = {
-	channelAccessToken: process.env.LINE_ACCESS_TOKEN, // ŠÂ‹«•Ï”‚©‚çƒAƒNƒZƒXƒg[ƒNƒ“‚ðƒZƒbƒg‚µ‚Ä‚¢‚Ü‚·
-	channelSecret: process.env.LINE_CHANNEL_SECRET // ŠÂ‹«•Ï”‚©‚çChannel Secret‚ðƒZƒbƒg‚µ‚Ä‚¢‚Ü‚·
+    channelAccessToken: process.env.LINE_ACCESS_TOKEN, // ç’°å¢ƒå¤‰æ•°ã‹ã‚‰ã‚¢ã‚¯ã‚»ã‚¹ãƒˆãƒ¼ã‚¯ãƒ³ã‚’ã‚»ãƒƒãƒˆã—ã¦ã„ã¾ã™
+    channelSecret: process.env.LINE_CHANNEL_SECRET // ç’°å¢ƒå¤‰æ•°ã‹ã‚‰Channel Secretã‚’ã‚»ãƒƒãƒˆã—ã¦ã„ã¾ã™
 };
 
 // -----------------------------------------------------------------------------
-// WebƒT[ƒo[Ý’è
+// Webã‚µãƒ¼ãƒãƒ¼è¨­å®š
 server.listen(process.env.PORT || 3000);
 
 
 // -----------------------------------------------------------------------------
-// ƒ‹[ƒ^[Ý’è
-server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
-	res.sendStatus(200);
-	console.log(req.body);
+// ãƒ«ãƒ¼ã‚¿ãƒ¼è¨­å®š
+server.post('/webhook', line.middleware(line_config), (req, res, next) => {
+    res.sendStatus(200);
+    console.log(req.body);
 });
-
