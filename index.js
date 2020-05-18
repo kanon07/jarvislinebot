@@ -10,6 +10,11 @@ const line_config = {
     channelSecret: process.env.LINE_CHANNEL_SECRET // 環境変数からChannel Secretをセットしています
 };
 
+const beebotte_config = {
+	BEE_TOKEN: process.env.YOUR_BEEBOTTE_TOKEN
+};
+
+
 // -----------------------------------------------------------------------------
 // Webサーバー設定
 server.listen(process.env.PORT || 3000);
