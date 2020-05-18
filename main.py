@@ -15,25 +15,25 @@ from linebot.models import (
 
 app = Flask(__name__)
 
-# LINE API関係の設定値取得
+# line api
     YOUR_CHANNEL_ACCESS_TOKEN = os.environ['YOUR_CHANNEL_ACCESS_TOKEN']
     YOUR_CHANNEL_SECRET = os.environ['YOUR_CHANNEL_SECRET']
 
-# Beebotte関係の設定値取得
+# beebotte
     YOUR_BEEBOTTE_TOKEN = os.environ['YOUR_BEEBOTTE_TOKEN']
 
     line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
-# 動作を起こすメッセージのリスト
+#act message
     on_msg = [s.encode('utf-8') for s in ['on', 'エアコンつけて！']]
     off_msg = [s.encode('utf-8') for s in ['off', 'エアコン切って！']]
 
-# LINEに通知メッセージを送る
+#line notiv
     def broadcast_line_msg(msg):
         line_bot_api.broadcast(TextSendMessage(text=msg))
 
-# エアコン制御用のMQTTをパブリッシュする
+#mqtt republish
         def publish_aircon_control_msg(msg):
             publish.single('JARVIS/sakuravpn', \
                     msg, \
