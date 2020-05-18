@@ -35,7 +35,7 @@ def broadcast_line_msg(msg):
 
 # エアコン制御用のMQTTをパブリッシュする
 def publish_aircon_control_msg(msg):
-    publish.single('my_home/aircon_control', \
+    publish.single('JARVIS/sakuravpn', \
                     msg, \
                     hostname='mqtt.beebotte.com', \
                     port=8883, \
