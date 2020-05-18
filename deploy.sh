@@ -1,3 +1,10 @@
 git add .
 git commit -m "implove"
-git push
+
+expect -c "
+spawn git push
+expect "Username"
+send "kanon07\n"
+expect "password"
+send "wakamekanonn13\n"
+"
