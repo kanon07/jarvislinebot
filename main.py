@@ -26,8 +26,8 @@ line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 # 動作を起こすメッセージのリスト
-on_msg = [s.encode('utf-8') for s in ['on', 'エアコンつけて！']]
-off_msg = [s.encode('utf-8') for s in ['off', 'エアコン切って！']]
+on_msg = [s.encode('utf-8') for s in ['on', 'vpn接続']]
+off_msg = [s.encode('utf-8') for s in ['off', 'vpn切断']]
 
 # LINEに通知メッセージを送る
 def broadcast_line_msg(msg):
@@ -68,11 +68,7 @@ def handle_message(event):
     elif msg in off_msg:
         publish_aircon_control_msg('off')
     else:
-        broadcast_line_msg('\n'.join(['エアコンをつけたい時：', \
-                                     *['['+s.decode('utf-8')+']' for s in on_msg], \
-                                     '\nエアコンを消したい時：', \
-                                     *['['+s.decode('utf-8')+']' for s in off_msg] , \
-                                     '\nって話しかけてね！']))
+        broadcast_line_msg('\n'.join(['有効な指示をお願いします']))
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT'))
