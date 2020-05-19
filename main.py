@@ -26,15 +26,14 @@ line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 # 動作を起こすメッセージのリスト
-on_msg = [s.encode('utf-8') for s in ['on', 'vpn接続']]
-off_msg = [s.encode('utf-8') for s in ['off', 'vpn切断']]
+reac_msg = [s.encode('utf-8') for s in ['on', 'off', '状態', 'status']]
 
 # LINEに通知メッセージを送る
 def broadcast_line_msg(msg):
     line_bot_api.broadcast(TextSendMessage(text=msg))
 
 # エアコン制御用のMQTTをパブリッシュする
-def publish_aircon_control_msg(msg):
+def publish_msg(msg):
     publish.single('JARVIS/sakuravpn', \
                     msg, \
                     hostname='mqtt.beebotte.com', \
@@ -63,10 +62,8 @@ def callback():
 def handle_message(event):
     msg = event.message.text.encode('utf-8')
 
-    if msg in on_msg:
-        publish_aircon_control_msg('on')
-    elif msg in off_msg:
-        publish_aircon_control_msg('off')
+    if msg in reac_msg:
+        publish_msg('msg')
     else:
         broadcast_line_msg('\n'.join(['有効な指示をお願いします']))
 
