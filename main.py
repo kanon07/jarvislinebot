@@ -63,7 +63,7 @@ def handle_message(event):
     msg = event.message.text.encode('utf-8')
 
     if msg in reac_msg:
-        publish_msg('msg')
+        publish_msg(msg)
     else:
         broadcast_line_msg('\n'.join(['有効な指示をお願いします']))
 
